@@ -80,7 +80,7 @@ public class FHIRObsUtil {
 			nameDisplay.append(")");
 			uri = FHIRConstants.PATIENT + "/" + obs.getPerson().getUuid();
 		} else {
-			uri = FHIRConstants.WEB_SERVICES_URI_PREFIX + "/" + FHIRConstants.PERSON + "/" + obs.getPerson().getUuid();
+			uri = FHIRConstants.PERSON + "/" + obs.getPerson().getUuid();
 		}
 
 		patientReference.setDisplay(nameDisplay.toString());
@@ -113,7 +113,7 @@ public class FHIRObsUtil {
 
 		//Set concepts
 		Collection<ConceptMap> mappings = obs.getConcept().getConceptMappings();
-		CodeableConceptDt dt = observation.getName();
+		CodeableConceptDt dt = observation.getCode();
 		List<CodingDt> dts = new ArrayList<CodingDt>();
 
 		for (ConceptMap map : mappings) {
